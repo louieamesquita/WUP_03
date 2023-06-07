@@ -54,7 +54,20 @@ basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='e
 ```{r}
 favstats(alcohol~Seat,data=davisdata)
 ```
+The guys in the back are drinking 3x the amount of alcohol than the guys in the front. the data shows that min is 0 but there are 4 in the back 1 in the middle and 0 in the front row. there is a huge difference between the back row and the front row with the back rounded to 10, middle 3 and 0 in the front. there are alot of poeple in the middle which does even out the amount of drinkers
+
+
 ## Inferential Tests
+```{r}
+model1 <- aov(alcohol~Seat,data=davisdata)
+summary.aov(model1)
+```
+
+```{r}
+plot(TukeyHSD(model1))
+```
+
+
 
 ## Conclusions
 
