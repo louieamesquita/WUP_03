@@ -67,8 +67,29 @@ summary.aov(model1)
 plot(TukeyHSD(model1))
 ```
 
+```{r}
+# Load the necessary library
+library(stats)
+
+# Perform ANOVA test
+anova_result <- aov(alcohol ~ Seat, data = davisdata)
+
+# Check the ANOVA table
+summary(anova_result)
+```
+
+```{r}
+# Perform Tukey HSD test
+tukey_result <- TukeyHSD(anova_result)
+
+# Print the results
+print(tukey_result)
+```
+
+
+
 
 
 ## Conclusions
-
+In summary we conclusion we discovered that those who sat in the back drank more alcohol the those who sat i the middle/ front row. We used a plot code to look at a graph that shows this. we also look at a number graph to see who sat where the most and what is the average drinker per person.  We discovered that most of the people sat in the middle row in which evened out the average drinker. We used multiple graphs with the aid of Chat GPT,  it gave code to look at the number in different ways to test the results out 
 
