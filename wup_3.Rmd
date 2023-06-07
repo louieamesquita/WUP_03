@@ -14,6 +14,14 @@ require(tidyverse)
 require(tigerstats)
 davisdata <- read.csv(file="UCDavis.csv")
 ```
+
+```{r eval=FALSE}
+davisdata <- davisdata %>%
+mutate(across(where(is.character), as.factor))
+```
+
+
+
 ## Our Goal is to answer this question Is there a difference between the alcohol consumed between the row
 ## you choose to sit in??
 
@@ -23,6 +31,13 @@ davisdata <- read.csv(file="UCDavis.csv")
 basicCN <- ggplot(davisdata,aes(y=alcohol,x=Seat))
 ```
 ## Now add in boxplot
+```{r}
+# Plotting the notched box plot with red outliers and centered title
+ggplot(davisdata, aes(x = Seat, y = alcohol)) +
+  geom_boxplot(notch = TRUE, outlier.colour = "red") +
+  labs(title = "Notched Box Plot of Alcohol by Seat") +
+  theme(plot.title = element_text(hjust = 0.5))
+```
 
 ```{r}
 basicCN + geom_boxplot()
@@ -36,7 +51,9 @@ basicCN + geom_boxplot(notch=TRUE,outlier.color = "red") + stat_boxplot(geom ='e
 ```
 
 ## Numerical Summarys 
-
+```{r}
+favstats(alcohol~Seat,data=davisdata)
+```
 ## Inferential Tests
 
 ## Conclusions
